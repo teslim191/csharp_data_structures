@@ -45,6 +45,30 @@ namespace index
 
             //escape quotes
             Console.WriteLine("a long day \"in\" nigeria");
+
+
+            //string builders
+
+            //will give you 16 character of 16
+            StringBuilder sb = new StringBuilder("i love coding");
+            Console.WriteLine(sb);
+
+            //to increase the character of space
+            StringBuilder sb2 = new StringBuilder("this is a new concept" +
+                "in c# that i am just exploring");
+            
+            Console.WriteLine("capacity of sb2 is :{0}",sb2.Capacity);
+
+            //append text to string builder
+            sb.AppendLine(" in c#");
+            //replace a text in a string builder
+            sb.Replace("c#", "javascript");
+            //append text in a string builder
+            sb.Append("program");
+            //check if two string builder are equal
+            Console.WriteLine("is sb equal to sb2? {0}", sb.Equals(sb2));
+            Console.WriteLine(sb);
+
         }
 
     }

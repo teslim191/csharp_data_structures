@@ -71,16 +71,56 @@ namespace loops_casting
 
             //change value at specific index
             scores.SetValue(100,4);
+            setValues(scores);
 
+            //copy items from an array
+            int[] srcArray = { 1, 2, 3,4 };
+            int[] desArray = new int[4];
+
+            int startindex = 0;
+            int length = 4;
+
+            Array.Copy(srcArray, startindex, desArray, startindex, length);
+            copyArray(desArray, "copy_array: {0}");
+
+
+            //to check if a condition is met
+
+            int[] values = { 10, 12, 13 };
+            Console.WriteLine("greater than 10: {0}", Array.FindAll(values,greaterThanTen));
+           
 
         }
-
+        //loop using a foreach loop
         static void printStudents(string[] students, string message)
         {
             foreach (string item in students)
             {
                 Console.WriteLine(message,item);
             }
+        }
+        //function to set values
+        static void setValues(int[] scores)
+        {
+            foreach (int item in scores)
+            {
+                Console.WriteLine(item);
+            }
+        }
+
+        //function to copy array
+        static void copyArray(int[] desArray, string message)
+        {
+            foreach (int item in desArray)
+            {
+            Console.WriteLine(message, item);
+
+            }
+        }
+
+        public static bool greaterThanTen(int val)
+        {
+            return val > 10;
         }
     }
 }
