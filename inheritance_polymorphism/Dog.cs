@@ -8,12 +8,13 @@
 
         public Dog()
             :this("No breed","No Sound","No Name","No Sound") { }
-        public Dog(string breed, string sound2, string name, string sound)
-            :base(name, sound)
+            public Dog(string breed, string sound2, string name, string sound)
+              :base(name, sound)
         {
-            Breed = breed;
-            Sound2 = sound2;
+          Breed = breed;
+        Sound2 = sound2;
         }
+
 
         public void AnimalDesc()
         {

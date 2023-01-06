@@ -14,6 +14,7 @@ namespace methods_enum
             //double y = 6;
             //Console.WriteLine("5 + 6 = {0}",GetSum(x,y)); 
 
+
             int solution;
             DoubleIt(15, out solution);
             Console.WriteLine("15 * 2 = {0}",solution);
@@ -40,9 +41,22 @@ namespace methods_enum
             CarColor car1 = CarColor.green;
             PaintColor(car1);
 
-    
+            int x = 20;
+            int y = 30;
+            Console.WriteLine("x and y is {0} and {1}", x, y);
+            RefAddition(ref x, ref y);
 
+
+            Console.WriteLine("the sum of the numbers is {0}", LoopDivide(1,2,3,4));
+
+            ;
+            Console.WriteLine("my full name is {0}", FullName(lastname: "jimoh", firstname: "teslim"));
+
+            RowNumber student_detail = RowNumber.mike;
+            GetPosition(student_detail);
         }
+
+
 
         static double GetSum(double x=1, double y = 1)
         {
@@ -58,6 +72,16 @@ namespace methods_enum
         {
             solution = x * 2;
         }
+
+        public static void RefAddition(ref int x, ref int y)
+        {
+            y = x;
+            x = y;
+            Console.WriteLine("the ref of x and y is {0} and {1}", x, y);
+
+
+        }
+
 
         //working with ref parameters
 
@@ -79,10 +103,26 @@ namespace methods_enum
             return sum;
         }
 
+        static int LoopDivide(params double[] numbers)
+        {
+            int sum = 0;
+            foreach (var item in numbers)
+            {
+                sum += (int) item;
+            }
+            return sum;
+        }
+
         //named params
         public static void GetDetails(string name, int zipcode)
         {
             Console.WriteLine("{0} lives at number {1}", name, zipcode);
+        }
+
+        public static string FullName(string firstname, string lastname)
+        {
+            string fullname = firstname + " " + lastname;
+            return fullname;
         }
 
         //method overload
@@ -112,6 +152,21 @@ namespace methods_enum
         static void PaintColor(CarColor cc)
         {
             Console.WriteLine("the car with the color code {0} was painted {1}", (int)cc, cc);
+        }
+
+
+        enum RowNumber: byte
+        {
+            john = 1,
+            jake,
+            mike,
+            brown
+
+        }
+
+        static void GetPosition(RowNumber number)
+        {
+            Console.WriteLine("{0} is sitting in position {1}", number,(byte)number);
         }
    
     }

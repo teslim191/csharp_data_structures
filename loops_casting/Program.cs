@@ -11,11 +11,12 @@ namespace loops_casting
     {
         static void Main(string[] args)
         {
+            //Array.Sort(), Array.Reverse(), Array.indexOf(), Array.Copy()
             //working with arrays
             //to declarre an array
             int[] numList = new int[3];
             numList[0] = 1;
-            numList[1] = 2;
+            numList[1] = 2; ;
             numList[2] = 3;
             // to get the index item using bracket notation
             Console.WriteLine("first item in the array: {0} ",numList[0]);
@@ -46,6 +47,18 @@ namespace loops_casting
             //working with multidimensional array
             string[,] students = new string[2,2] { { "john", "jake" }, { "bane", "jude" } };
             Console.WriteLine("jake's value : {0}", students.GetValue(0,1));
+
+            int[,] age = new int[2, 2] { { 1, 2 }, { 4, 5} };
+            Console.WriteLine("the second value is: {0}", age.GetValue(0,1));
+
+
+            for (int i = 0; i < age.GetLength(0); i++)
+            {
+                for (int j = 0; j < age.GetLength(1); j++)
+                {
+                    Console.WriteLine("the values are {0}",age[i,j]);
+                }
+            }
 
             //loop through a multidimensional array using a for loop
             for(int i=0; i < students.GetLength(0); i++)
@@ -82,6 +95,19 @@ namespace loops_casting
 
             Array.Copy(srcArray, startindex, desArray, startindex, length);
             copyArray(desArray, "copy_array: {0}");
+
+            int[] oldArray = new int[5] { 1, 2, 3, 4, 5 };
+            int[] newArray = new int[5];
+
+            int startArrayIndex = 0;
+            int arrayLength = oldArray.Length;
+
+            Array.Copy(oldArray, startindex,newArray,startArrayIndex,arrayLength);
+
+            for (int m = 0; m < newArray.Length; m++)
+            {
+                Console.WriteLine("Array Index: {0}-->>> value: {1}", m, newArray[m]);
+            }
 
 
             //to check if a condition is met

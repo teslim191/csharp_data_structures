@@ -11,7 +11,7 @@ namespace collections
     {
         static void Main(string[] args)
         {
-            //arraylist are resizeable arrays can hold multiple  data types
+            //arraylist are resizeable arrays can hold multiple  data
             // bring in System.Collections to use ArrayList
             ArrayList aList = new ArrayList();
             //add items singly
@@ -21,7 +21,6 @@ namespace collections
             Console.WriteLine("Count: {0}", aList.Count);
             // get capacity
             Console.WriteLine("Count: {0}", aList.Capacity);
-
 
             //add multiple items at once
             ArrayList aList2 = new ArrayList();

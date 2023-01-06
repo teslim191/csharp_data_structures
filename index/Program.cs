@@ -43,6 +43,8 @@ namespace index
             string newString = String.Format("{0} is {1}", "coding", "fun");
             Console.WriteLine(newString);
 
+
+
             //escape quotes
             Console.WriteLine("a long day \"in\" nigeria");
 
@@ -60,7 +62,7 @@ namespace index
             Console.WriteLine("capacity of sb2 is :{0}",sb2.Capacity);
 
             //append text to string builder
-            sb.AppendLine(" in c#");
+            Console.WriteLine("{0}",sb.AppendLine(" in c#")); 
             //replace a text in a string builder
             sb.Replace("c#", "javascript");
             //append text in a string builder
