@@ -80,7 +80,7 @@ namespace linq_extension_methods
             //Distinct will return values that are distinct
 
             var Values = new List<int>() { 1, 2, 3, 3, 5, 5 };
-            var distinctValues = Values.Distinct();
+            var distinctValues = Values.Distinct().ToList();
             foreach(var item_5 in distinctValues)
                 Console.WriteLine(item_5);
 
@@ -91,7 +91,7 @@ namespace linq_extension_methods
             //  Console.WriteLine(item_6);
 
             //intersect will compare two values but return values that are in both list
-            var result = Values.Intersect(newValue);
+            var result = Values.Intersect(newValue).ToList();
             foreach(var item_7 in result)
                 Console.WriteLine(item_7);
 
