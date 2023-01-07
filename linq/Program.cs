@@ -60,6 +60,7 @@ namespace linq
         static int[] TestScores()
         {
             int[] testscores = { 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 5, 15, 25, 35, 45, 55, 65, 75, 85, 95 };
+           
             var highest_testscores = from hg_testscores in testscores
                                      where hg_testscores >= 50 && hg_testscores <= 100
                                      orderby hg_testscores ascending
@@ -150,30 +151,33 @@ namespace linq
         //further use cases of select
         static void QueryArray()
         {
-            //animal array
-            Animal[] animal = new[]
+            //animal raray
+            Animal[] animals = new[]
             {
                   new Animal
                 {
                     Name="John",
                     Height=.76,
-                    Weight=89
+                    Weight=89,
+                    AnimalID=1
                 },
                 new Animal
                 {
                     Name="Jake",
                     Height=.77,
-                    Weight=88
+                    Weight=88,
+                    AnimalID=1
                 },
                 new Animal
                 {
                     Name="Jack",
                     Height=.89,
-                    Weight=100
+                    Weight=100,
+                    AnimalID=2
                 }
             };
 
-            Owner[] Owner = new[]
+            Owner[] owners = new[]
             {
                 new Owner
                 {
@@ -193,7 +197,7 @@ namespace linq
             };
 
             //select only the name and height from the animal array
-            var nameHeight = from a in animal
+            var nameHeight = from a in animals
                              select new
                              {
                                  a.Name,
@@ -203,7 +207,48 @@ namespace linq
             foreach(var item_9 in nameHeight)
                 Console.WriteLine("{0} has a height of {1}",item_9.Name, item_9.Height);
 
+
+            //working with inner join
+            var ownerNameAnimal = from animal in animals
+                                  join owner in owners
+                                  on animal.AnimalID equals owner.OwnerID
+                                  select new
+                                  {
+                                      ownerName=owner.Name,
+                                      animalName=animal.Name
+                                  };
+
+            foreach(var item_10 in ownerNameAnimal)
+                Console.WriteLine("{0} owns {1}",item_10.ownerName,item_10.animalName);
+
+            //group join
+
+            var groupjoin = from owner in owners
+                            orderby owner.OwnerID
+                            join animal in animals
+                            on owner.OwnerID equals animal.AnimalID
+                            into ownerGroup
+                            select new
+                            {
+                                Owner = owner.Name,
+                                Animal = from owner2 in ownerGroup
+                                         orderby owner2.Name
+                                         select owner2
+                                         
+                            };
+
+            foreach(var item_1 in groupjoin)
+            {
+                Console.WriteLine(item_1.Owner);
+                foreach (var animal in item_1.Animal)
+                {
+                    Console.WriteLine( "{0}", animal.Name);
+
+                }
+            }
         }
+
+
       
 
     }
